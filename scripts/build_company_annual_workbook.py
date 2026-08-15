@@ -49,7 +49,7 @@ INK = "3A322C"            # основной текст
 PRIMARY = "1F3A5F"        # выручка / основная метрика
 SECONDARY = "4A7BA7"      # трафик и охват
 TERTIARY = "8FB8D9"       # конверсия и воронка
-ACCENT = "7A9A7E"         # доля рынка
+ACCENT = "3F6B52"         # доля рынка (отделён от ACCENT2: ΔE 11.3 protan, 18.9 normal)
 ACCENT2 = "C97B5A"        # конкуренты
 SHADE = "EDCBC1"          # затенённый период — пыльно-розовый
 GRID = "E3D9CE"
@@ -492,7 +492,9 @@ def sheet_trends(wb, daily, monthly):
     # B. Прогноз роста по категориям — scatter с планками погрешностей.
     panel_header(ws, "B", "Прогноз роста по категориям, ±95 % ДИ", "% г/г")
     sc = ScatterChart()
-    palette = [PRIMARY, SECONDARY, TERTIARY, ACCENT, ACCENT2, PRIMARY, SECONDARY, ACCENT]
+    # Цвет кодирует знак прогноза, а не порядковый номер категории:
+    # перебирать 5 оттенков по 8 сериям — значит закодировать цветом ранг, а не сущность.
+    palette = [PRIMARY if growth >= 0 else ACCENT2 for _, growth, _ in categories]
     xcol = get_column_letter(t_fc["cols"]["N"])
     ycol = get_column_letter(t_fc["cols"]["Прогноз"])
     cicol = get_column_letter(t_fc["cols"]["ДИ"])
@@ -786,12 +788,15 @@ def sheet_digital(wb, daily, monthly):
     for offset, (_, label, reverse) in enumerate(KPI_COLUMNS):
         col = get_column_letter(t_kpi["cols"][label])
         rng = f"{col}{t_kpi['first']}:{col}{t_kpi['last']}"
-        low, high = ("C97B5A", "1F3A5F") if not reverse else ("1F3A5F", "C97B5A")
+        # Величина, а не полярность → последовательная одноцветная шкала,
+        # светлое→тёмное. Для CPL инвертирована: меньше — лучше.
+        ramp = ["E8EEF4", "7FA3C4", "1F3A5F"]
+        low, mid, high = ramp if not reverse else ramp[::-1]
         ws.conditional_formatting.add(
             rng,
             ColorScaleRule(
                 start_type="percentile", start_value=5, start_color=low,
-                mid_type="percentile", mid_value=50, mid_color="EDCBC1",
+                mid_type="percentile", mid_value=50, mid_color=mid,
                 end_type="percentile", end_value=95, end_color=high,
             ),
         )
