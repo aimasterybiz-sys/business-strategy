@@ -1,5 +1,7 @@
 # Как сделать «Моя квартира после CleaningRiga» в Lovable
 
+> Общая версия для любой ниши и любой базы знаний (Claude Code или Lovable): [universalnaya-instruktsiya-prilozhenie-do-posle.md](universalnaya-instruktsiya-prilozhenie-do-posle.md).
+
 > Компания демо: открытые данные и допущения. Инструкция от 04.11.2026. Black Friday — 27.11.2026.
 
 **Идея:** клиент фотографирует свою комнату → ИИ показывает её чистой → ползунок «до ↔ после» → цена, подарок Black Friday и заявка в таблицу (Lovable Cloud и, по желанию, Google Таблица).
