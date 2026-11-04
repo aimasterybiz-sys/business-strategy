@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Дорожная карта практикума · Рига, 6 ноября 2026</title>
+<style>
+:root{--bg:#fff;--fg:#1b1d21;--mut:#5f6570;--line:#e6e8ee;
+--p1:#64748b;--p1bg:#f1f5f9;--p2:#2f5bea;--p2bg:#eef2ff;--p3:#15803d;--p3bg:#ecfdf3;--ok:#15803d;--no:#dc2626}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:16px}
+h1{font-size:19px;margin:0 0 4px}
+.sub{color:var(--mut);margin:0 0 12px;font-size:13px}
+.bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.track{flex:1;min-width:180px;height:10px;border-radius:999px;background:#eef0f4;overflow:hidden}
+.fill{height:100%;width:0;background:var(--ok);transition:width .3s}
+.count{font-size:13px;font-weight:600}
+.reset{font:inherit;font-size:12px;color:var(--mut);background:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px;cursor:pointer}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-bottom:12px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.hint{font-size:12px;color:var(--mut)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mod{margin:14px 0 8px;font-weight:700;font-size:15px;padding-left:10px;border-left:4px solid var(--c)}
+.mod.p1{--c:var(--p1)} .mod.p2{--c:var(--p2)} .mod.p3{--c:var(--p3)}
+.sec{break-inside:avoid}
+.card{position:relative;display:grid;grid-template-columns:1fr 40px;gap:8px;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:12px;padding:12px;background:var(--cbg);transition:opacity .2s}
+.p1{--c:var(--p1);--cbg:var(--p1bg)} .p2{--c:var(--p2);--cbg:var(--p2bg)} .p3{--c:var(--p3);--cbg:var(--p3bg)}
+.card.done{box-shadow:inset 0 0 0 2px var(--ok)}
+.card.fail{box-shadow:inset 0 0 0 2px var(--no)}
+.top{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+.n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--c);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.t{font-weight:700;line-height:1.25;padding-top:4px}
+.pr{display:inline-block;font-size:11px;color:var(--c);border:1px solid var(--c);border-radius:999px;padding:0 7px;background:#fff;margin-top:3px}
+.row{display:grid;grid-template-columns:72px 1fr;gap:6px;font-size:13px;margin-top:4px}
+.k{color:var(--mut);font-size:12px;padding-top:1px}
+.res{font-weight:600}
+code{font:12px ui-monospace,Menlo,Consolas,monospace;background:#fff;border:1px solid var(--line);border-radius:5px;padding:0 4px}
+.mark{width:40px;height:40px;border-radius:10px;border:2px dashed #c8ccd6;background:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;align-self:start}
+.card.done .mark{border:2px solid var(--ok);background:#ecfdf3}
+.card.fail .mark{border:2px solid var(--no);background:#fef2f2}
+.finish{margin-top:12px;border:1px dashed var(--p3);border-radius:12px;padding:10px 12px;font-size:13px;background:#fff}
+.finish b{color:var(--p3)}
+.event{border:2px solid var(--fg);border-radius:14px;padding:14px 16px;margin:0 0 14px;display:grid;grid-template-columns:1fr auto;gap:6px 16px}
+.ev-k{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.ev-name{grid-column:1/-1;font-size:20px;font-weight:800;line-height:1.2}
+.ev-meta{font-size:14px}
+.ev-meta b{font-weight:700}
+.ev-who{grid-column:1/-1;margin-top:6px;font-size:14px;border-top:1px solid var(--line);padding-top:8px}
+.ev-who span{display:inline-block;min-width:260px;border-bottom:1px solid #9aa1ad;margin-left:6px}
+.notes{margin-top:14px;border:1px solid var(--line);border-radius:12px;padding:10px 12px;break-inside:avoid}
+.notes h2{font-size:15px;margin:0 0 6px}
+.notes .ln{height:28px;border-bottom:1px solid #d5d9e0}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+@media print{
+  @page{size:A4;margin:12mm}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .reset,.print,.hint{display:none}
+  .wrap{padding:0}
+  .card{break-inside:avoid}
+  .mark{border:2px solid #9aa1ad}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="event">
+<div class="ev-k">Практикум</div>
+<div class="ev-name">«AI-агенты в маркетинге, продажах и клиентском сервисе»</div>
+<div class="ev-meta"><b>Рига · 6 ноября 2026</b> · 10:00–17:30</div>
+<div class="ev-meta">Организатор: <b>Business Education Plus</b> (bep.lv)</div>
+<div class="ev-meta" style="grid-column:1/-1">Спикеры: <b>Дмитрий Кутузакин</b> и <b>Светлана Гончарова</b></div>
+<div class="ev-who">Участник:<span>&nbsp;</span>&nbsp;&nbsp; Компания:<span>&nbsp;</span></div>
+</div>
+<h1 id="title"></h1>
+<p class="sub" id="sub"></p>
+<div class="bar"><div class="track"><div class="fill" id="fill"></div></div><div class="count" id="count"></div><button class="reset" id="reset">сбросить отметки</button><button class="reset print" id="print">🖨 распечатать</button></div>
+<div class="legend" id="legend"></div>
+<p class="hint">Нажимайте квадрат справа у шага: один раз — ✅ сделано, второй — ❌ не получилось, третий — снова пусто.</p>
+<div id="grid"></div>
+<div class="finish" id="finish"></div>
+<div class="notes"><h2>Мои заметки</h2><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+</div>
+<script>
+/* Шаблон одинаковый для всех дорожных карт практикума: меняется только этот блок. */
+const MAP = {
+  key: "praktikum-riga:ves-praktikum:v2",
+  title: "Дорожная карта практикума: три AI-агента для вашего бизнеса за один день",
+  sub: "3 модуля · 15 шагов · одна папка AI-SYSTEM: каждый следующий агент читает результаты предыдущего",
+  phases: {p1:"Модуль 1 · AI-агент-маркетолог", p2:"Модуль 2 · AI-агент продаж", p3:"Модуль 3 · AI-агент клиентского сервиса"},
+  steps: [
+    {p:"p1", t:"Старт: папка AI-SYSTEM и данные", pr:"промпты 1–3", d:"создаём папки практикума, кладём файлы о бизнесе", r:"<code>AI-SYSTEM</code> с четырьмя папками, данные в <code>00_O-BIZNESE</code>"},
+    {p:"p1", t:"Видимость и инструменты", pr:"промпт 4", d:"проверяем, где вас видят Google, карты и нейросети, даём агенту «глаза» в интернете", r:"таблица ✅/❌ видимости, инструменты подключены"},
+    {p:"p1", t:"Папка маркетолога", pr:"промпты 5–6", d:"распаковываем готового агента и открываем его сессию", r:"маркетолог знает компанию, инструменты проверены"},
+    {p:"p1", t:"Ниша, конкуренты, аватары", pr:"промпты 7–9", d:"рынок и спрос, 3–7 конкурентов, голос клиента из отзывов", r:"<code>nisha.md</code>, <code>konkurenty.md</code>, <code>avatary.md</code>"},
+    {p:"p1", t:"След, аналитик и дашборд", pr:"промпты 10–11", d:"что о вас знают люди и нейросети; аналитик сводит всё вместе", r:"<code>Dashboard.html</code>, анализ и шесть действий"},
+    {p:"p2", t:"Подготовка и папка продавца", pr:"промпты 1–2", d:"Python, свой бот у @BotFather, архив в <code>02_PRODAZHI</code>", r:"ключ бота получен, папка открыта в Claude"},
+    {p:"p2", t:"Настройка", pr:"промпт 3", d:"агент проверяет папки, Python и вход Claude для бота", r:"таблица ✅/❌: у каждого ❌ одна строка «что сделать»"},
+    {p:"p2", t:"Книга продаж", pr:"промпты 4–5", d:"агент читает материалы, задаёт три вопроса и пишет книгу", r:"<code>Kniga-prodazh.md</code>: оффер, портреты, цены, возражения"},
+    {p:"p2", t:"Свой бот и репетиция", pr:"промпты 6–7", d:"включаем бота в Telegram, учим его на своих вопросах кнопками 👍 и ✏️", r:"«Владелец: подключён», «обучение пройдено»"},
+    {p:"p2", t:"Обмен ботами, каналы, передача", pr:"промпты 8–11", d:"сосед «покупает» у вашего бота; follow-up; WhatsApp на отдельном номере; «Беру диалог»", r:"предложение и три follow-up, бот зовёт вас, когда надо"},
+    {p:"p3", t:"Материалы и аккаунты", pr:"", d:"файлы Модулей 1 и 2 под рукой, входы в Claude и Lovable", r:"четыре файла найдены, аккаунты работают"},
+    {p:"p3", t:"Мобильное приложение в Claude и Lovable", pr:"шаблон промпта", d:"меняем [скобки] в шаблоне под свой бизнес, собираем в Claude Code с Lovable, публикуем", r:"приложение по ссылке: фото → «после» → цена → заявка"},
+    {p:"p3", t:"Демо: голосовой агент и видео-аватар", pr:"показ", d:"ElevenLabs: голос, знания, сценарий; HeyGen: аватар, озвучка, перевод видео", r:"понятно, где голос и видео помогут вашему сервису"},
+    {p:"p3", t:"Демо: workflow в Magnific и другие сервисы", pr:"показ", d:"цепочка шагов для картинок и видео; ещё сервисы, например Apollo", r:"список «что попробую у себя»"},
+    {p:"p3", t:"Вопросы и следующий шаг", pr:"", d:"дискуссия; курс «Нейросети для бизнеса: эра агентов» (старт 12 ноября)", r:"вопросы заданы, решение по курсу принято"}
+  ],
+  finish: "🏁 <b>Результат практикума:</b> три рабочих AI-агента в одной папке на вашем компьютере: маркетолог с исследованием рынка и дашбордом, продавец с книгой продаж и ботом в Telegram, мобильное приложение «до → после» и представление о голосовом агенте, видео-аватаре и Magnific. Минимум для зачёта: дашборд (модуль 1), книга продаж и обученный бот (модуль 2), мобильное приложение (модуль 3)."
+};
+
+const ICON = {"":"", ok:"✅", no:"❌"};
+let state = {};
+function load(){ try { state = JSON.parse(localStorage.getItem(MAP.key) || "{}"); } catch(e){ state = {}; } }
+function save(){ try { localStorage.setItem(MAP.key, JSON.stringify(state)); } catch(e){} }
+
+function render(){
+  document.getElementById("title").textContent = MAP.title;
+  document.getElementById("sub").textContent = MAP.sub;
+  const colors = {p1:"var(--p1)", p2:"var(--p2)", p3:"var(--p3)"};
+  document.getElementById("legend").innerHTML = Object.entries(MAP.phases)
+    .map(([k,v]) => `<span style="--c:${colors[k]}">${v}</span>`).join("");
+  const card = (s,i) => {
+    const st = state[i] || "";
+    const cls = st === "ok" ? " done" : st === "no" ? " fail" : "";
+    return `<div class="card ${s.p}${cls}">
+      <div>
+        <div class="top"><div class="n">${i+1}</div><div><div class="t">${s.t}</div>${s.pr ? `<span class="pr">${s.pr}</span>` : ""}</div></div>
+        <div class="row"><div class="k">Делаем</div><div>${s.d}</div></div>
+        <div class="row"><div class="k">Результат</div><div class="res">${s.r}</div></div>
+      </div>
+      <button class="mark" data-i="${i}" aria-label="Отметка шага ${i+1}">${ICON[st]}</button>
+    </div>`;
+  };
+  document.getElementById("grid").innerHTML = Object.keys(MAP.phases).map(p =>
+    `<div class="sec"><div class="mod ${p}">${MAP.phases[p]}</div><div class="grid">${MAP.steps.map((s,i)=>s.p===p?card(s,i):"").join("")}</div></div>`
+  ).join("");
+  document.getElementById("finish").innerHTML = MAP.finish;
+  const done = MAP.steps.filter((_,i) => state[i] === "ok").length;
+  document.getElementById("count").textContent = `Сделано ${done} из ${MAP.steps.length}`;
+  document.getElementById("fill").style.width = (done / MAP.steps.length * 100) + "%";
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest(".mark");
+  if (b) {
+    const i = b.dataset.i, cur = state[i] || "";
+    state[i] = cur === "" ? "ok" : cur === "ok" ? "no" : "";
+    save(); render();
+  }
+  if (e.target.id === "reset") { state = {}; save(); render(); }
+  if (e.target.id === "print") { window.print(); }
+});
+load(); render();
+</script>
+</body>
+</html>
