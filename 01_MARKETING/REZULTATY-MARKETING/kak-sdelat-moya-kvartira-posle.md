@@ -1,6 +1,6 @@
 # Как сделать «Моя квартира после CleaningRiga» в Lovable
 
-> Общая версия для любой ниши и любой базы знаний (Claude Code или Lovable): [universalnaya-instruktsiya-prilozhenie-do-posle.md](universalnaya-instruktsiya-prilozhenie-do-posle.md).
+> Короткий шаблон промпта, чтобы сделать такое же приложение под свой бизнес (Claude Code или Lovable): [shablon-prompt-prilozhenie-do-posle.md](shablon-prompt-prilozhenie-do-posle.md).
 
 > Компания демо: открытые данные и допущения. Инструкция от 04.11.2026. Black Friday — 27.11.2026.
 
